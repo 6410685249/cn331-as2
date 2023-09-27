@@ -22,3 +22,7 @@ urlpatterns = [
     path('login/', include('users.urls')),
     # path('register/', include('reg.urls')),
 ]
+
+admin.site.index_title = "Registration"
+admin.site.site_header = "Registration Admin"
+admin.site.site_title = "Registration Admin Login"
