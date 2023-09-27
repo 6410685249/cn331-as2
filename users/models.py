@@ -5,6 +5,6 @@ from django.db import models
 class Student(models.Model):
     name = models.CharField(max_length=64)
     surname = models.CharField(max_length=64)
-    id = models.IntegerField(primary_key=True)
-    status = models.CharField(max_length=20)
+    id = models.CharField(primary_key=True, max_length=10)
+    status = models.BooleanField(default=False)
     # subjects = models.ManyToManyField(Subject, blank=True, related_name="list Subjects")
