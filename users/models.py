@@ -1,5 +1,5 @@
 from django.db import models
-# from administrator.models import Subject
+from administrator.models import Subject
 
 # Create your models here.
 class Student(models.Model):
@@ -20,4 +20,4 @@ class Student(models.Model):
     id = models.CharField(primary_key=True, max_length=10)
     status = models.BooleanField(default=False)
     faculty = models.CharField(max_length=128, choices=FACULTY, default="null")
-    # subjects = models.ManyToManyField(Subject, blank=True, related_name="list Subjects")
+    subjects = models.ManyToManyField(Subject, blank=True, related_name="list_Subjects")
