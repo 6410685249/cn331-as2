@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block head %} List of Quota Subjects {% endblock %}
+
+{% block body %}
+<table>
+    {% for sub in subjects %}
+        {% if sub.quota %}
+            <tr>
+                <td> {{ sub.code }} </td>
+                <td> {{ sub.name }} </td>
+                <td> {{ count }} / {{ sub.seat }} </td>
+                {% if count < sub.seat %}
+                    <td> Add </td>
+                {% endif %}
+                {% if count == sub.seat %}
+                    <td> full seat </td>
+                {% endif %}
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+<p>
+    <a href="{% url 'index' %}"> Go back </a>
+</p>
+
+{% endblock %}
