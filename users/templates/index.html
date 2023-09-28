@@ -6,11 +6,9 @@
     <h1> Welcome, {{ request.user.first_name }} </h1>
 
     <h2> Information </h2>
-    <p> Name-Surname : {{ request.user.name }} {{ request.user.surname }} </p>
-    <p> ID : {{ request.user.id }} </p>
+    <p> Name-Surname : {{ request.user.first_name }} {{ request.user.last_name }} </p>
+    <p> ID : {{ request.user.student_id }} </p>
     <p> Faculty : {{ request.user.faculty }} </p>
-    
-    
 
     <h3> List of Subjects </h3>
     <ul>
