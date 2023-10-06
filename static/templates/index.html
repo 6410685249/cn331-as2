@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block head %} Register {% endblock %}
+
+{% block body %}
+    <h1> Welcome, {{ request.user.first_name }} </h1>
+
+    <h2> Information </h2>
+    <p> Name-Surname : {{ request.user.first_name }} {{ request.user.last_name }} </p>
+    <p> ID : {{ student.student_id }} </p>
+    <p> Faculty : {{ student.faculty }} </p>
+
+    <h3> List of Subjects </h3>
+    <ul>
+        {% for sub in subjects %}
+            <li> {{sub}} </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'reg:Quota' %}"> List of Quota </a><br>
+    <a href="{% url 'logout' %}"> Log Out </a>
+
+{% endblock %}
