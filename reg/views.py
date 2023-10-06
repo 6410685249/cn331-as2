@@ -23,8 +23,15 @@ def Add_Quota(request, code):
         'student' : student_subjects,
     })
 
+def Subject_page(request):
+    student = Student.objects.get(user_id=request.user)
+    student_subjects = student.subjects.all()
+    return render(request, 'Adding_page.html', {
+        'student' : student,
+        'subjects' : student_subjects,
+    })
+
 # def Delete_Quota(request):
-# def Add_Subject(request):
 # def Delete_Subject(request):
 
 def Quota(request):

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block head %} Adding Subject {% endblock %}
+
+{% block body %}
+
+<table>
+    <tr>
+        <th> Code </th>
+        <th> Subject name </th>
+        <th> Delete </th>
+    </tr>
+    {% for sub in subjects %}
+        <tr>
+            <td> {{ sub.code }} </td>
+            <td> {{ sub.name }} </td>
+            <td> :) </td>
+        </tr>
+    {% endfor %}
+</table>
+
+    <a href="{% url 'reg:Quota' %}"> Add Quota </a><br>
+    <a href="{% url 'index' %}"> Go back </a>
+
+{% endblock %}
