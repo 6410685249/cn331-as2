@@ -4,16 +4,23 @@
 
 {% block body %}
 <table>
+    <tr>
+        <th> Code </th>
+        <th> Subject name </th>
+        <th> Seat </th>
+        <th> Result </th>
+    </tr>
     {% for sub in subjects %}
         {% if sub.quota %}
             <tr>
                 <td> {{ sub.code }} </td>
                 <td> {{ sub.name }} </td>
-                <td> {{ count }} / {{ sub.seat }} </td>
-                {% if count < sub.seat %}
-                    <td> Add </td>
-                {% endif %}
-                {% if count == sub.seat %}
+                <td> {{ sub.count_seat }} / {{ sub.seat }} </td>
+                {% if sub in student %}
+                    <td> Already Enrolled </td>
+                {% elif sub.count_seat < sub.seat %}
+                    <td> <a href="{% url 'reg:Add_Quota' code=sub.code %}"> Add </a> </td>
+                {% elif sub.count_seat == sub.seat %}
                     <td> full seat </td>
                 {% endif %}
             </tr>
