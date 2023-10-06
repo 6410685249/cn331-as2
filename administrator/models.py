@@ -18,6 +18,7 @@ class Subject(models.Model):
     year = models.CharField(max_length=4, default="2566")
     quota = models.BooleanField(default=False)
     seat = models.IntegerField()
+    count_seat = models.IntegerField(default=0)
     students = models.ManyToManyField(to='users.Student', blank=True, related_name='List_students')\
     
     def __str__(self):
