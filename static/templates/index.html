@@ -1,24 +1,41 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block head %} Register {% endblock %}
 
+{% block style %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
 {% block body %}
     <h1> Welcome, {{ request.user.first_name }} </h1>
+    
+    <article>
+        <h2> Information </h2>
+        <div>
+            <table>
+                <tr>
+                    <th> Name-Surname </th>
+                    <td> {{ request.user.first_name }} {{ request.user.last_name }} </td>
+                </tr>
+                <tr>
+                    <th> ID </th>
+                    <td> {{ student.student_id }} </td>
+                </tr>
+                <tr>
+                    <th> Faculty </th>
+                    <td> {{ student.faculty }} </td>
+                </tr>
+            </table>
 
-    <h2> Information </h2>
-    <p> Name-Surname : {{ request.user.first_name }} {{ request.user.last_name }} </p>
-    <p> ID : {{ student.student_id }} </p>
-    <p> Faculty : {{ student.faculty }} </p>
-
-    <h3> List of Subjects </h3>
-    <ul>
-        {% for sub in subjects %}
-            <li> {{sub}} </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'reg:Quota' %}"> Add Quota </a><br>
-    <a href="{% url 'reg:Subject_page' %}"> Add/Cancel Subject </a><br>
-    <a href="{% url 'logout' %}"> Log Out </a>
+            <h3> List of Subjects </h3>
+            <table>
+                {% for sub in subjects %}
+                    <tr>
+                        <th> {{sub.code}} </th>
+                        <td> {{sub.name}} </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </article>
 
 {% endblock %}
