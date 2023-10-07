@@ -8,17 +8,23 @@
 
 {% block body %}
 
+    <h1>Login (Student)</h1>
+
     <form class="login" action="{% url 'login' %}" method="post">
         <div class="container">
             {% csrf_token %}
+            <label for="uname" class='header'><b>Username</b></label>
             <input type="text" name="username" placeholder="Username">
+
+            <label for="pass" class='header'><b>Password</b></label>
             <input type="password" name="password" placeholder="Password">
-            <input type="submit" value="Login">
+
+            {% if message %}
+                <div id="failed">{{ message }}</div>
+            {% endif %}
+
+            <input type="submit" value="Login" class="button">
         </div>
     </form>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
 
 {% endblock %}
