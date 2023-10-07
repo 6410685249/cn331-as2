@@ -1,51 +1,64 @@
 {% extends 'layout.html' %}
 
+{% load static %}
+
 {% block head %} Adding Subject {% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'css/adding_page.css' %}">{% endblock %}
 
 {% block body %}
 
 <h1> List of Subject </h1>
-<h2> Subject plan </h2>
-<table>
-    <tr>
-        <th> Code </th>
-        <th> Subject name </th>
-        <th> Delete </th>
-    </tr>
-    {% for sub in subjects %}
-        <tr>
-            <td> {{ sub.code }} </td>
-            <td> {{ sub.name }} </td>
-            <td> <a href="{% url 'reg:Delete_Subject' code=sub.code %}"> Delete </a> </td>
-        </tr>
-    {% endfor %}
-</table>
+<div class="container">
 
-<h2> Common subject </h2>
-<table>
-    <tr>
-        <th> Code </th>
-        <th> Subject name </th>
-        <th> Seat </th>
-        <th> Add </th>
-    </tr>
-    {% for sub in list_of_subject %}
-        {% if not sub.quota and sub not in subjects %}
+    <div>
+        <h2> Subject plan </h2>
+        <table class="table">
             <tr>
-                <td> {{ sub.code }} </td>
-                <td> {{ sub.name }} </td>
-                <td> {{ sub.count_seat }} / {{ sub.seat }} </td>
-                {% if sub.count_seat < sub.seat %}
-                    <td> <a href="{% url 'reg:Add_Subject' code=sub.code %}"> Add </a> </td>
-                {% elif sub.count_seat == sub.seat %}
-                    <td> full seat </td>
-                {% endif %}
+                <th> Code </th>
+                <th> Subject name </th>
+                <th> Delete </th>
             </tr>
-        {% endif %}
-    {% endfor %}
-</table>
+            {% for sub in subjects %}
+                <tr>
+                    <td> {{ sub.code }} </td>
+                    <td style="text-align: left;"> {{ sub.name }} </td>
+                    <td> <a href="{% url 'reg:Delete_Subject' code=sub.code %}"> <img src="{% static 'images/trash.png' %}" class="trash"> </a> </td>
+                </tr>
+            {% endfor %}
+    </table>
+    </div>
 
-    <a href="{% url 'reg:Quota' %}"> Add Quota </a><br>
-    <a href="{% url 'index' %}"> Go back </a>
+    <div>
+        <h2> Common subject </h2>
+        
+        <table>
+            <tr>
+                <th> Code </th>
+                <th> Subject name </th>
+                <th> Seat </th>
+                <th> Add </th>
+            </tr>
+            {% for sub in list_of_subject %}
+                {% if not sub.quota and sub not in subjects %}
+                    <tr>
+                        <td> {{ sub.code }} </td>
+                        <td style="text-align: left;"> {{ sub.name }} </td>
+                        <td> {{ sub.count_seat }} / {{ sub.seat }} </td>
+                        {% if sub.count_seat < sub.seat %}
+                            <td> <a href="{% url 'reg:Add_Subject' code=sub.code %}"> <img src="{% static 'images/register.png' %}" class="register"> </a> </td>
+                        {% elif sub.count_seat == sub.seat %}
+                            <td> full seat </td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+    {% comment %} <a href="{% url 'reg:Quota' %}"> Add Quota </a><br>
+    <a href="{% url 'index' %}"> Go back </a> {% endcomment %}
 
 {% endblock %}
