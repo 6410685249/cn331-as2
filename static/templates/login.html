@@ -1,13 +1,14 @@
-{% extends 'layout.html' %}
-
 {% load static %}
 
-{% block head %} Login {% endblock %}
-
-{% block style %}<link rel="stylesheet" href="{% static 'css/login.css' %}">{% endblock %}
-
-{% block body %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login </title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
     <h1>Login (Student)</h1>
 
     <form class="login" action="{% url 'login' %}" method="post">
@@ -26,5 +27,5 @@
             <input type="submit" value="Login" class="button">
         </div>
     </form>
-
-{% endblock %}
+</body>
+</html>
