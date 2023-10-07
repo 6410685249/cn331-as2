@@ -14,7 +14,7 @@
         <tr>
             <td> {{ sub.code }} </td>
             <td> {{ sub.name }} </td>
-            <td> :) </td>
+            <td> <a href="{% url 'reg:Delete_Subject' code=sub.code %}"> Delete </a> </td>
         </tr>
     {% endfor %}
 </table>

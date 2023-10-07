@@ -31,8 +31,18 @@ def Subject_page(request):
         'subjects' : student_subjects,
     })
 
-# def Delete_Quota(request):
-# def Delete_Subject(request):
+def Delete_Subject(request, code):
+    subject = Subject.objects.get(code=code)
+    student = Student.objects.get(user_id=request.user)
+    (subject.students).remove(student)
+    (student.subjects).remove(subject)
+    subject.count_seat -= 1
+    subject.save()
+    student_subjects = student.subjects.all()
+    return render(request, 'Quota.html', {
+        'subjects' : student_subjects,
+        'student' : student_subjects,
+    })
 
 def Quota(request):
     list_subject = Subject.objects.all()
