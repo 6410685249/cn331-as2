@@ -7,3 +7,12 @@
     /* background: #5d3416; */
     border-radius: 15px ;
 }
+
+.container {
+    padding: 17%;
+    border-radius: 15px;
+}
+
+button:hover {
+    opacity: 0.82;
+}
