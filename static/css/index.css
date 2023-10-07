@@ -54,22 +54,3 @@ td {
     border-radius: 10px;
     width: 60%
 }
-
-a {
-    background-color: #ffc6c2;
-    font-size: 20px;
-    color: rgb(158, 55, 55);
-    text-decoration: none;
-}
-
-a:visited {
-    background-color: #ffc6c2;
-    color: rgb(158, 55, 55);
-    text-decoration: none;
-}
-
-a:hover {
-    background-color: #853d38;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
