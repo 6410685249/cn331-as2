@@ -1,14 +1,18 @@
 {% extends 'layout.html' %}
-
+{% load static %}
 {% block head %} Login {% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'static/css/login.css' %}">{% endblock %}
 
 {% block body %}
 
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
+    <form action="{% url 'login' %}" method="post" class='login'>
+        <div>
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+            </div>
     </form>
 
     {% if message %}
