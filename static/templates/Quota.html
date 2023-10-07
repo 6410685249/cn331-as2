@@ -1,31 +1,40 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block head %} List of Quota Subjects {% endblock %}
 
+{% block style %}<link rel="stylesheet" href="{% static 'css/Quota.css' %}">{% endblock %}
+
 {% block body %}
-<table>
-    <tr>
-        <th> Code </th>
-        <th> Subject name </th>
-        <th> Seat </th>
-        <th> Result </th>
-    </tr>
-    {% for sub in subjects %}
-        {% if sub.quota %}
-            <tr>
-                <td> {{ sub.code }} </td>
-                <td> {{ sub.name }} </td>
-                <td> {{ sub.count_seat }} / {{ sub.seat }} </td>
-                {% if sub in student %}
-                    <td> Already Enrolled </td>
-                {% elif sub.count_seat < sub.seat %}
-                    <td> <a href="{% url 'reg:Add_Quota' code=sub.code %}"> Add </a> </td>
-                {% elif sub.count_seat == sub.seat %}
-                    <td> full seat </td>
-                {% endif %}
-            </tr>
-        {% endif %}
-    {% endfor %}
-</table>
+<h1> List of Quota subject </h1>
+
+<article>
+    <table>
+        <tr>
+            <th> Code </th>
+            <th> Subject name </th>
+            <th> Seat </th>
+            <th> Result </th>
+        </tr>
+        {% for sub in subjects %}
+            {% if sub.quota %}
+                <tr>
+                    <td style="text-align: center;"> {{ sub.code }} </td>
+                    <td> {{ sub.name }} </td>
+                    <td style="text-align: center;"> {{ sub.count_seat }} / {{ sub.seat }} </td>
+                    {% if sub in student %}
+                        <td style="text-align: center;"> Already Enrolled </td>
+                    {% elif sub.count_seat < sub.seat %}
+                        <td style="text-align: center;"> <a href="{% url 'reg:Add_Quota' code=sub.code %}"> 
+                            <img src="{% static 'images/register.png' %}" 
+                        </a> </td>
+                    {% elif sub.count_seat == sub.seat %}
+                        <td style="text-align: center;"> full seat </td>
+                    {% endif %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</article>
 
 {% endblock %}

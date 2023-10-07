@@ -23,11 +23,13 @@ h2 {
     margin-bottom: 10px;
     color: #61564c;
     border-style: none none solid none;
+    font-family: serif;
 }
 
 h3 {
     margin-bottom: 5px;
     color: #61564c;
+    font-family: serif;
 }
 
 div {
