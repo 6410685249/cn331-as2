@@ -28,7 +28,6 @@ def Subject_page(request):
     student_subjects = student.subjects.all()
     subject = Subject.objects.all()
     return render(request, 'Adding_page.html', {
-        'student' : student,
         'subjects' : student_subjects,
         'list_of_subject' : subject,
     })
@@ -44,7 +43,6 @@ def Delete_Subject(request, code):
     student_subjects = student.subjects.all()
     return render(request, 'Adding_page.html', {
         'subjects' : student_subjects,
-        'student' : student,
         'list_of_subject' : subject,
     })
 
@@ -59,7 +57,6 @@ def Add_Subject(request, code):
     student_subjects = student.subjects.all()
     return render(request, 'Adding_page.html', {
         'subjects' : student_subjects,
-        'student' : student,
         'list_of_subject' : subject,
     })
 
