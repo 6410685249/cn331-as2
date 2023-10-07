@@ -17,10 +17,11 @@ def Add_Quota(request, code):
     (student.subjects).add(subject)
     subject.count_seat += 1
     subject.save()
+    subject = Subject.objects.all()
     student_subjects = student.subjects.all()
     return render(request, 'Quota.html', {
-        'subjects' : student_subjects,
-        'student' : student_subjects,
+        'subjects' : subject,
+        'student' : student_subjects
     })
 
 def Subject_page(request):
