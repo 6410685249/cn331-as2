@@ -1,6 +1,6 @@
 # cn331-as2 Registration Web Application Features
 ### Members
-- Chalisa Thammaraj \[6410685041\]
+- Chalisa Thummaraj \[6410685041\]
 - Siriphatson Sringamphong \[6410685249\]
 
 ### Presentation Video
