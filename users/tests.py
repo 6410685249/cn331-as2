@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from users.models import Student
-from administrator.models import Subject
+from django.contrib.auth import authenticate
+from django.http import HttpResponseRedirect
 
 # Create your tests here.
 
@@ -29,3 +30,18 @@ class LoginViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('message' in response.context)
         self.assertEqual(response.context['message'], 'Invalid credentials!')
+    
+    def test_index_view_authenticated_user(self):
+        response = self.client.post(reverse('login'), {'username': '6410681111', 'password': 'iamharry123'})
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('index'))
+        user = authenticate(username='6410681111', password='iamharry123')
+        self.assertTrue(user.is_authenticated)
+        
+    # def test_index_view_unauthenticated_user(self):
+    #     self.client.logout()
+    #     response = self.client.get(reverse('index'))
+    #     self.assertIsInstance(response, HttpResponseRedirect)
+    #     # self.assertEqual(response, HttpResponseRedirect)  # Redirect to login page
+    #     # self.assertRedirects(response.url, reverse('login'))
+    #     self.assertEqual(response.url, reverse('login'))
