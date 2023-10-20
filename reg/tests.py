@@ -74,7 +74,7 @@ class RegisterViewsTest(TestCase):
     def test_Delete_Subject_view(self):
         self.client.login(username='6410681111', password='iamharry123')
         self.student1.subjects.add(self.cn331)
-        self.student1.subjects.add(self.cn321)
+        self.student1.subjects.add(self.cn361)
 
         response = self.client.get(reverse('reg:Delete_Subject', args=['CN331',]))
         self.assertEqual(response.status_code, 200)
@@ -82,7 +82,7 @@ class RegisterViewsTest(TestCase):
         # Verify that the student is deleted subject
         student_subjects = self.student1.subjects.all()
         self.assertFalse(self.cn331 in student_subjects)
-        self.assertTrue(self.cn321 in student_subjects)
+        self.assertTrue(self.cn361 in student_subjects)
         
     def test_logout_view(self):
         self.client.login(username='6410681111', password='iamharry123')
